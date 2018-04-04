@@ -16,7 +16,7 @@ public class BlackjackedMain {
 
         if (play.equalsIgnoreCase("Y")) {
             while (play.equalsIgnoreCase("Y")) {
-                Manager playGame = new Manager();
+                Manager playGame = new Manager(input);
                 int score = playGame.newRound();
                 playGame.win(score);
                 System.out.println("Would you like to play another game? (Y/N) ");
