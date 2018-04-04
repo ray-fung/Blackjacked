@@ -20,7 +20,7 @@ public class Manager {
     }
 
     public int newRound() {
-        String choice = "";
+        String choice;
         boolean compTurn = false;
         hit(player);
         hit(comp);
@@ -31,18 +31,7 @@ public class Manager {
             return player.blackjack() ? 1 : -1;
         }
         
-        System.out.println("The computer's hand is currently " + comp.toString());
-
-        while (!compTurn) {
-            if (comp.handValue() + cards.peek() <= 21) {
-                System.out.println("The computer decided to hit.");
-                hit(comp);
-                System.out.println("The computer's hand is currently " + comp.toString());
-            } else {
-                compTurn = true;
-                System.out.println("The computer decided to stay.");
-            }
-        }
+        System.out.println("The dealer's hand is currently " + comp.toString());
 
         do {
             System.out.println("Your hand is currently " + player.toString());
@@ -57,6 +46,19 @@ public class Manager {
         }
         while (choice.equalsIgnoreCase("Y"));
 
+        System.out.println("It's the dealer's turn.");
+        System.out.println("The dealer's hand is currently " + comp.toString());
+
+        while (!compTurn) {
+            if (comp.handValue() + cards.peek() <= 21) {
+                System.out.println("The dealer decided to hit.");
+                hit(comp);
+                System.out.println("The dealer's hand is currently " + comp.toString());
+            } else {
+                compTurn = true;
+                System.out.println("The dealer decided to stay.");
+            }
+        }
         return player.compareTo(comp);
     }
 
@@ -77,6 +79,6 @@ public class Manager {
             System.out.println("Almost! You tied.");
         }
         System.out.println("Your hand was " + player.toString() + " for " + player.handValue() + ".");
-        System.out.println("The computer's hand was " + comp.revealAll() + " for " + comp.handValue() + ".");
+        System.out.println("The dealer's hand was " + comp.revealAll() + " for " + comp.handValue() + ".");
     }
 }

@@ -6,14 +6,11 @@ import java.util.*;
 
 public class Hand implements Comparable<Hand> {
 
-    private Set<DeckCard> hand;
-    private boolean blackjack;
-    private boolean bust;
+//    private Set<DeckCard> hand;
+    private Queue<DeckCard> hand;
 
     public Hand() {
-        this.hand = new HashSet();
-        this.blackjack = false;
-        this.bust = false;
+        hand = new LinkedList();
     }
 
     public void add(DeckCard card) {
@@ -24,7 +21,7 @@ public class Hand implements Comparable<Hand> {
         hand.clear();
     }
     
-    public Set<DeckCard> getHand() {
+    public Queue<DeckCard> getHand() {
         return hand;
     }
 
@@ -34,6 +31,17 @@ public class Hand implements Comparable<Hand> {
 
     public boolean bust() {
         return handValue() > 21;
+    }
+
+    public boolean splitable() {
+        if (hand.size() == 2) {
+            DeckCard temp = hand.remove();
+            hand.add(temp);
+            DeckCard temp2 = hand.remove();
+            hand.add(temp2);
+            return temp.getName().equals(temp2.getName());
+        }
+        return false;
     }
 
     public int handValue() {
