@@ -7,12 +7,8 @@
 import java.util.*;
 
 public class Deck {
-    
-    private Hand player = new Hand();
-    private CompHand comp = new CompHand();
 
     private ArrayList<DeckCard> deck;
-    private final int size = 52;
     private final String[] suites = {"Spades", "Clubs", "Hearts", "Diamonds"};
     private final String[] values = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
 
